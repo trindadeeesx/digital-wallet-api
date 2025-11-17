@@ -28,10 +28,13 @@ public class TransactionService {
 	private TransactionRepo transactionRepo;
 
 	@Autowired
+	private NotificationService notificationService;
+
+	@Autowired
 	private RestTemplate rest;
 
 	// Cria uma nova transação
-	public void createTransaction(TransactionDTO transaction) throws Exception {
+	public Transaction createTransaction(TransactionDTO transaction) throws Exception {
 		User sender = this.userService.findUserById(transaction.senderId());
 		User receiver = this.userService.findUserById(transaction.receiverId());
 
@@ -58,6 +61,12 @@ public class TransactionService {
 		this.transactionRepo.save(newTransaction);
 		this.userService.saveUser(sender);
 		this.userService.saveUser(receiver);
+
+		// Envia notificações para o remetente e o destinatário
+		this.notificationService.sendNotification(sender, "Você enviou " + transaction.amount() + " para " + receiver.getFirstName() + " " + receiver.getLastName() + ".");
+		this.notificationService.sendNotification(receiver, "Você recebeu " + transaction.amount() + " de " + sender.getFirstName() + " " + sender.getLastName() + ".");
+
+		return newTransaction;
 	}
 
 	// Autoriza uma transação via serviço externo
