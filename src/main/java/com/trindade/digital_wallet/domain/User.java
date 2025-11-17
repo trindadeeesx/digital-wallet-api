@@ -5,6 +5,9 @@ import lombok.*;
 
 import java.math.BigDecimal;
 
+/**
+ * Entidade que representa um usuário do sistema
+ */
 @Entity(name="users")
 @Table(name="users")
 @Getter

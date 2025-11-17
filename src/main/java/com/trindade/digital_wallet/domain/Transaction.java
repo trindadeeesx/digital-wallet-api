@@ -6,6 +6,9 @@ import lombok.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+/**
+ * Entidade que representa uma transação financeira entre usuários
+ */
 @Entity(name="transactions")
 @Table(name="transactions")
 @Getter
