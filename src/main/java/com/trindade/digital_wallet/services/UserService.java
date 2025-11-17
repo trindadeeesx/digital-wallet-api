@@ -2,11 +2,13 @@ package com.trindade.digital_wallet.services;
 
 import com.trindade.digital_wallet.domain.User;
 import com.trindade.digital_wallet.domain.UserRole;
+import com.trindade.digital_wallet.dtos.UserDTO;
 import com.trindade.digital_wallet.repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * Serviço responsável por gerenciar operações relacionadas ao usuário.
@@ -39,5 +41,17 @@ public class UserService {
 	// Salva ou atualiza um usuário no repositório
 	public void saveUser(User user) {
 		this.userRepo.save(user);
+	}
+
+	// Cria um novo usuário com base nos dados fornecidos
+	public User createUser(UserDTO user) {
+		User newUser = new User(user);
+		this.userRepo.save(newUser);
+		return newUser;
+	}
+
+	// Recupera todos os usuários do repositório
+	public List<User> getAllUsers() {
+		return this.userRepo.findAll();
 	}
 }
