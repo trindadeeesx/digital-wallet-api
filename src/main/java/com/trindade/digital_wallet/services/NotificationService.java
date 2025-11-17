@@ -5,11 +5,13 @@ import com.trindade.digital_wallet.dtos.NotificationDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 /**
  * Serviço responsável por gerenciar operações relacionadas a notificações.
  */
+@Service
 public class NotificationService {
 	@Autowired
 	private RestTemplate rest;
