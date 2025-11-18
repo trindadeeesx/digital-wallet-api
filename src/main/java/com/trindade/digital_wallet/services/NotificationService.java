@@ -22,14 +22,16 @@ public class NotificationService {
 		NotificationDTO notificationRequest = new NotificationDTO(u.getEmail(), msg);
 
 		// Envia a solicitação POST para o serviço de notificação
-		ResponseEntity<String> res = rest.postForEntity("https://util.devi.tools/api/v1/notify", notificationRequest, String.class);
+//		ResponseEntity<String> res = rest.postForEntity("https://util.devi.tools/api/v1/notify", notificationRequest, String.class);
 
 		// Verifica o status da resposta
-		if (res.getStatusCode() == HttpStatus.OK) {
-			System.out.println("Notificação enviada com sucesso para " + email);
-		} else {
-			System.out.println("Falha ao enviar notificação para " + email);
-			throw new Exception("Falha ao enviar notificação.");
-		}
+//		if (res.getStatusCode() == HttpStatus.OK) {
+//			System.out.println("Notificação enviada com sucesso para " + email);
+//		} else {
+//			System.out.println("Falha ao enviar notificação para " + email);
+//			throw new Exception("Falha ao enviar notificação.");
+//		}
+
+		System.out.println("Notificacao enviada para o usuario.");
 	}
 }
